@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.pjatk.RentalService.model.Movie;
 import pl.pjatk.RentalService.service.RentalService;
 
-
 @RestController
 @RequiredArgsConstructor
 public class RentalController {

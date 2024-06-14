@@ -1,10 +1,13 @@
 package pl.pjatk.RentalService.service;
 
+import feign.FeignException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-import pl.pjatk.RentalService.exception.MovieNotFoundException;
+import pl.pjatk.RentalService.exception.BadGatewayException;
+import pl.pjatk.RentalService.exception.GatewayTimeoutException;
+import pl.pjatk.RentalService.exception.NotFoundException;
 import pl.pjatk.RentalService.model.Movie;
+
 
 @Service
 @RequiredArgsConstructor
@@ -15,8 +18,10 @@ public class RentalService {
     public Movie getMovie(Integer id) {
         try {
             return client.getMovie(id);
-        } catch (Exception exception) {
-            throw new MovieNotFoundException("Brak filmu");
+        } catch (FeignException.InternalServerError internalServerError) {
+            throw new BadGatewayException("");
+        }  catch (Exception exception) {
+            throw new NotFoundException("Brak filmu");
         }
     }
 

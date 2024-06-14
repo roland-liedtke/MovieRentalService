@@ -1,12 +1,10 @@
 package pl.pjatk.RentalService.exception;
 
-import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
-@Getter
-public class MovieNotFoundException extends ExceptionEvent {
+public class NotFoundException extends ExceptionEvent {
 
-    public MovieNotFoundException(String message) {
+    public NotFoundException(String message) {
         super(message);
     }
 
@@ -17,6 +15,6 @@ public class MovieNotFoundException extends ExceptionEvent {
 
     @Override
     public HttpStatus getHttpStatus() {
-        return HttpStatus.BAD_REQUEST;
+        return HttpStatus.NOT_FOUND;
     }
 }
