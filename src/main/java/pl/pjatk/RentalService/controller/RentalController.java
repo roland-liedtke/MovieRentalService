@@ -1,5 +1,6 @@
 package pl.pjatk.RentalService.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,13 +11,10 @@ import pl.pjatk.RentalService.service.RentalService;
 
 
 @RestController
+@RequiredArgsConstructor
 public class RentalController {
 
-    private RentalService rentalService;
-
-    public RentalController(RentalService rentalService) {
-        this.rentalService = rentalService;
-    }
+    private final RentalService rentalService;
 
     @GetMapping("/movies/{id}")
     public ResponseEntity<Movie> getMovie(@PathVariable Integer id) {
