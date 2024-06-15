@@ -10,7 +10,7 @@ public class NotFoundException extends ExceptionEvent {
 
     @Override
     public String getErrorMessage() {
-        return "Nie znalazłem takiego filmu";
+        return "404 Nie znalazłem takiego filmu";
     }
 
     @Override

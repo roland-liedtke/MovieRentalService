@@ -8,6 +8,8 @@ import pl.pjatk.RentalService.exception.GatewayTimeoutException;
 import pl.pjatk.RentalService.exception.NotFoundException;
 import pl.pjatk.RentalService.model.Movie;
 
+import java.net.ConnectException;
+
 
 @Service
 @RequiredArgsConstructor
@@ -18,9 +20,10 @@ public class RentalService {
     public Movie getMovie(Integer id) {
         try {
             return client.getMovie(id);
-        } catch (FeignException.InternalServerError internalServerError) {
+        }
+        catch (FeignException.InternalServerError internalServerError) {
             throw new BadGatewayException("");
-        }  catch (Exception exception) {
+        } catch (Exception exception) {
             throw new NotFoundException("Brak filmu");
         }
     }

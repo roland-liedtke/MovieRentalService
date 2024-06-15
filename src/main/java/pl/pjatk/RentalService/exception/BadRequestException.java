@@ -10,7 +10,7 @@ public class BadRequestException extends ExceptionEvent {
 
     @Override
     public String getErrorMessage() {
-        return "Nieprawidłowe zapytanie.";
+        return "400 Nieprawidłowe zapytanie.";
     }
 
     @Override
